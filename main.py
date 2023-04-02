@@ -54,6 +54,7 @@ def add_parameter_ui(clf_name):
 		C = st.sidebar.slider("C",0.01,10.0)
 		params["C"] = C
 	elif clf_name == "神经网络":
+		solver =
 		alpha = st.sidebar.slider("alpha",0.01,0.99)
 		params["alpha"]=alpha
 	else:
