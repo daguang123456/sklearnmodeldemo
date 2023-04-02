@@ -54,9 +54,10 @@ def add_parameter_ui(clf_name):
 		C = st.sidebar.slider("C",0.01,10.0)
 		params["C"] = C
 	elif clf_name == "神经网络":
-		solver =
+		solver = st.sidebar.radio("solver",("lbfgs","sgd","adam"))
 		alpha = st.sidebar.slider("alpha",0.01,0.99)
 		params["alpha"]=alpha
+		params["solver"] = solver
 	else:
 		max_depth = st.sidebar.slider("max_depth",2,15)
 		n_estimators = st.sidebar.slider("n_estimators",1,100)
@@ -77,7 +78,7 @@ def get_classifier(clf_name, params):
 		clf = SVC(C=params["C"])
 		# params["C"] = C
 	elif clf_name == "神经网络":
-		clf = MLPClassifier(solver='lbfgs', alpha=params["alpha"],
+		clf = MLPClassifier(solver=params["solver"], alpha=params["alpha"],
           					random_state=1)
 	else:
 		# max_depth = st.sidebar.slider("max_depth", 2,15)
